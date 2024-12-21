@@ -56,12 +56,12 @@ export function ImageUpload() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto">
       <div
         className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors
           ${isDragging 
-            ? 'border-blue-500 bg-blue-50' 
-            : 'border-gray-300 hover:border-gray-400'
+            ? 'border-purple-500 bg-purple-900/20' 
+            : 'border-purple-700 hover:border-purple-500'
           }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -80,11 +80,11 @@ export function ImageUpload() {
           htmlFor="file-input"
           className="flex flex-col items-center cursor-pointer"
         >
-          <Upload className="w-12 h-12 text-gray-400 mb-3" />
-          <p className="text-xl font-medium text-gray-700 mb-2">
+          <Upload className="w-12 h-12 text-purple-400 mb-3" />
+          <p className="text-xl font-medium text-purple-100 mb-2">
             Drop your images here
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-purple-300">
             or click to select files
           </p>
         </label>
@@ -95,17 +95,18 @@ export function ImageUpload() {
           {images.map((image, index) => (
             <div
               key={image.preview}
-              className="relative group aspect-square rounded-lg overflow-hidden bg-gray-100"
+              className="relative group aspect-square rounded-lg overflow-hidden bg-gray-800"
             >
               <img
                 src={image.preview}
                 alt={`Preview ${index + 1}`}
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
               <button
                 onClick={() => removeImage(index)}
-                className="absolute top-2 right-2 p-1 rounded-full bg-white/80 text-gray-700 
-                         opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute top-2 right-2 p-1.5 rounded-full bg-purple-900/90 text-purple-100 
+                         opacity-0 group-hover:opacity-100 transition-opacity hover:bg-purple-800"
               >
                 <X className="w-4 h-4" />
               </button>
